@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import WorkModal, { Artwork } from "./WorkModal"
+import Image from 'next/image'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -95,11 +96,13 @@ export default function Gallery() {
               onClick={() => setSelectedArtwork(art)}
               className="gallery-card group relative cursor-pointer"
             >
-              <div className="overflow-hidden aspect-[3/4] bg-zinc-900 rounded-2xl mb-4">
-                <img
+              <div className="aspect-3/4 bg-zinc-900 rounded-2xl mb-4">
+                <Image
                   src={art.img}
                   alt={art.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="overflow-hidden rounded-2xl object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
                 />
               </div>
               <h3 className="text-xl fornt-medium">{art.title}</h3>
@@ -115,11 +118,13 @@ export default function Gallery() {
               onClick={() => {setSelectedArtwork(art)}}
               className="gallery-card group relative cursor-pointer"
             >
-              <div className="overflow-hidden aspect-[3/4] bg-zinc-900 rounded-2xl mb-4">
-                <img
+              <div className="aspect-3/4 bg-zinc-900 rounded-2xl mb-4">
+                <Image
                   src={art.img}
                   alt={art.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="overflow-hidden rounded-2xl object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
                 />
               </div>
               <h3 className="text-xl font-medium">{art.title}</h3>

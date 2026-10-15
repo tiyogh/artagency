@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Image from 'next/image'
 
 export interface Artwork {
   id: number;
@@ -59,11 +60,14 @@ export default function WorkModal({ artwork, onClose }: WorkModalProps) {
           ✕
         </button>
 
-        <div className="aspect-square md:aspect-auto w-full h-full bg-zinc-900 overflow-hidden">
-          <img
+        <div className="aspect-square md:aspect-auto w-full h-full bg-zinc-900 overflow-hidden relative min-h-300px">
+          <Image
             src={artwork.img}
             alt={artwork.title}
-            className="w-full h-full object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+            priority
           />
         </div>
 
